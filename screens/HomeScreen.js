@@ -13,6 +13,7 @@ import {
 
 import { MonoText } from '../components/StyledText';
 import Constants from 'expo-constants';
+import { red } from 'ansi-colors';
 
 const DATA= [
   {
@@ -64,10 +65,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     ...Platform.select({
       ios: {
+        backgroundColor: 'red',
 
       },
       android: {
         paddingTop: 0,
+        backgroundColor: 'blue',
       },
     }),
   },
