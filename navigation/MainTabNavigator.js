@@ -4,8 +4,8 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import CategoriesScreen from '../screens/CategoriesScreen';
+import CartScreen from '../screens/CartScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -26,8 +26,8 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `ios-home${focused ? '' : ''}`
+          : 'md-home'
       }
     />
   ),
@@ -35,42 +35,42 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const CategoriesStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Categories: CategoriesScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+CategoriesStack.navigationOptions = {
+  tabBarLabel: 'Categories',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-list' : 'md-list'} />
   ),
 };
 
-LinksStack.path = '';
+CategoriesStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const CartStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Cart: CartScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+CartStack.navigationOptions = {
+  tabBarLabel: 'Cart',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-cart' : 'md-cart'} />
   ),
 };
 
-SettingsStack.path = '';
+CartStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  CategoriesStack,
+  CartStack,
 });
 
 tabNavigator.path = '';
