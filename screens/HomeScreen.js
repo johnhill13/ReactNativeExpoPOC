@@ -10,10 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
-import { MonoText } from '../components/StyledText';
-import Constants from 'expo-constants';
-import { red } from 'ansi-colors';
+import { hidden } from 'ansi-colors';
 
 const DATA= [
   {
@@ -37,7 +34,7 @@ const DATA= [
 function Item({ title }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.item}>{title}</Text>
     </View>
   );
 }
@@ -45,7 +42,7 @@ function Item({ title }) {
 export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
+      <FlatList 
         data={DATA}
         renderItem={({ item }) => <Item title={item.title} />}
         keyExtractor={item => item.id}
@@ -73,5 +70,33 @@ const styles = StyleSheet.create({
         backgroundColor: 'blue',
       },
     }),
+  },
+  item: {
+    // borderColor: 'black',
+    // borderWidth: 5,
+    overflow: 'hidden',
+    borderRadius: 5,
+    // Set border width.
+    borderWidth: 2,
+    // Set border Hex Color Code Here.
+    borderColor: '#FF5722',
+    // Setting up Text Font Color.
+    color: '#fff',
+    // Setting Up Background Color of Text component.
+    backgroundColor : '#CDDC39',
+    // Adding padding on Text component.
+    padding : 2,
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+
+    ...Platform.select({
+      ios: {
+        borderColor: 'blue',
+      },
+      android: {      
+
+      }
+    })
   },
 });
