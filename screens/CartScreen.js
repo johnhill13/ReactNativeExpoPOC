@@ -1,14 +1,19 @@
 import React from 'react';
-import { ExpoConfigView } from '@expo/samples';
+import { ScrollView } from 'react-native';
+
+
 
 export default function CartScreen() {
-  /**
-   * Go ahead and delete ExpoConfigView and replace it with your content;
-   * we just wanted to give you a quick view of your config.
-   */
-  return <ExpoConfigView />;
+  return (
+    <ScrollView>
+
+      {/* If you can't find.... this is where my text goes  */}
+
+    </ScrollView>
+  );
+  return;
 }
 
 CartScreen.navigationOptions = {
-  title: 'app.json',
+  title: 'Cart',
 };
