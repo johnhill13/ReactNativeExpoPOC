@@ -1,24 +1,61 @@
-import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import React, { Component } from 'react'
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+} from 'react-native'
 
-export default function CategoriesScreen() {
-  return (
-    <ScrollView style={styles.container}>
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { count: 0 }
+  }
 
-      {/* If you can't find.... this is where my text goes  */}
+  onPress = () => {
+    this.setState({
+      count: this.state.count+1
+    })
+    if (this.state.count == 9) {
+      alert('Bang Bang Number ten')
+    }
+  }
 
-    </ScrollView>
-  );
+ render() {
+   return (
+     <View style={styles.container}>
+       <TouchableOpacity
+         style={styles.button}
+         onPress={this.onPress}
+       >
+         <Text> Click Here!! </Text>
+       </TouchableOpacity>
+       <View style={[styles.countContainer]}>
+         <Text style={[styles.countText]}>
+            { this.state.count !== 0 ? this.state.count: null}
+          </Text>
+        </View>
+      </View>
+    )
+  }
 }
-
-CategoriesScreen.navigationOptions = {
-  title: 'Categories',
-};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
+    justifyContent: 'center',
+    paddingHorizontal: 10
   },
-});
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10
+  },
+  countContainer: {
+    alignItems: 'center',
+    padding: 10
+  },
+  countText: {
+    color: '#FF00FF'
+  }
+})
